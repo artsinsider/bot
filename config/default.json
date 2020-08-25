@@ -1,0 +1,8 @@
+{
+  "TOKEN": "1395328799:AAFtokNY-TYsfZqJPgec3HDMtgdNTi3k4i8",
+  "PORT": 3010,
+  "URL" : "https://terminal-telegram-bot-preprod.tass.ru",
+  "SOKKET": "wss://centrifugo-01.dev.itass.local/connection/websocket",
+  "TERMINAL_BOT_NAME": "telegram_bot",
+  "TERMINAL_BOT_PASS": "123qwe"
+}

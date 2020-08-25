@@ -1,0 +1,10 @@
+.idea
+node_modules
+build
+.vagrant
+package-lock.json
+/index.html
+sftp-config.json
+/ansible/playbook.retry
+.DS_Store
+/webpack/config-local.js
