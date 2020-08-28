@@ -1,7 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const config = require("config");
 import * as API from "./api/server"
-
 import {users} from './api/server';
 
 const port = config.get("PORT");
@@ -47,18 +46,15 @@ bot.onText(/\/start (.+)/, (msg, [src, match]) => {
     API.telegramLinkTerminalUser(id, match);
     if(!users[id]) addNewUser(msg);
     bot.sendMessage(id,
-        "<b><strong>Мы очень рады что вы выбрали Терминал ТАСС!</strong></b>\n" +
-        "Свежие новости только для вас без СМС и регистрации."
+        "Добро пожаловать в бот уведомлений Терминала ТАСС!\n" +
+        "Используйте опцию \"Уведомлять через Telegram\" при сохранении поисковых запросов."
     , { parse_mode: "HTML" })
 });
-
-
 
 bot.on('callback_query', async function (msg) {
     const data = msg.data.split("_");
     const userId = `${msg.from.id}` ;
     const messageId = +data[1];
-
 
     switch(data[0]) {
         case 'TEXT':
@@ -68,14 +64,11 @@ bot.on('callback_query', async function (msg) {
 
         case 'PDF':
             const pdf = await API.telegramTerminalGetMaterialPDF(userId, messageId);
-            // bot.sendDocument()
-            return
+            return;
 
         default: return
     }
-
 });
-
 
 bot.onText(/\/exampless (.+)/, (msg) => {
     const {chat: {id}} = msg;
